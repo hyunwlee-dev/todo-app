@@ -1,19 +1,25 @@
 :root {
-  /* common */
+  --font-size-xxxl: 2.222rem;
+  --line-height-xxxl: 2.222rem;
+  --letter-spacing-xxxl: 0.833rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --theme-white-color: hsla(0, 0%, 100%, 1);
   --theme-background-color: hsl(0, 0%, 98%);
   --theme-check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
-  --theme-background-image: url('/images/bg-mobile-light.jpg');
+}
+
+.light {
+  --theme-background-image: url('/images/bg-desktop-light.jpg');
   @media only screen and (max-width: 768px) {
-    --theme-background-image: url('/images/bg-desktop-light.jpg');
+    --theme-background-image: url('/images/bg-mobile-light.jpg');
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+.dark {
+  --theme-background-image: url('/images/bg-desktop-dark.jpg');
+  @media only screen and (max-width: 768px) {
     --theme-background-image: url('/images/bg-mobile-dark.jpg');
-    @media only screen and (max-width: 768px) {
-      --theme-background-image: url('/images/bg-desktop-dark.jpg');
-    }
   }
 }
 
@@ -28,8 +34,7 @@
 html,
 body {
   font-size: 18px;
-  background-color: var(--theme-background-color);
-  color: var(--color-white);
+  font-weight: var(--font-weight-normal);
 }
 
 a {
@@ -45,4 +50,12 @@ button {
   background: transparent;
   border: none;
   cursor: pointer;
+}
+
+h1 {
+  font-size: var(--font-size-xxxl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-xxxl);
+  letter-spacing: var(--letter-spacing-xxxl);
+  margin: 0;
 }

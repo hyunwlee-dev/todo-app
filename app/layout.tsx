@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { josefinSans } from "@/app/ui/font";
+import "normalize.css";
 import "./globals.css";
+import ThemeProvider from "./contexts/theme.context";
 
 
 const title = process.env.NEXT_PUBLIC_TITLE;
@@ -43,7 +45,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={josefinSans.className}>{children}</body>
+      <body className={josefinSans.className}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
