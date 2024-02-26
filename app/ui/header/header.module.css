@@ -1,0 +1,17 @@
+.header {
+  margin-top: 3.889rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.header::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 300px;
+  z-index: -100;
+  background: var(--theme-background-image) no-repeat center / 100% 100%;
+}
