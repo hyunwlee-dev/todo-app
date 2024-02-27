@@ -5,11 +5,11 @@
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   --theme-white-color: hsla(0, 0%, 100%, 1);
-  --theme-background-color: hsl(0, 0%, 98%);
   --theme-check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 }
 
 .light {
+  --theme-background-color: hsl(0, 0%, 98%);
   --theme-background-image: url('/images/bg-desktop-light.jpg');
   @media only screen and (max-width: 768px) {
     --theme-background-image: url('/images/bg-mobile-light.jpg');
@@ -17,6 +17,7 @@
 }
 
 .dark {
+  --theme-background-color: hsla(235, 21%, 11%, 1);
   --theme-background-image: url('/images/bg-desktop-dark.jpg');
   @media only screen and (max-width: 768px) {
     --theme-background-image: url('/images/bg-mobile-dark.jpg');
@@ -35,6 +36,8 @@ html,
 body {
   font-size: 18px;
   font-weight: var(--font-weight-normal);
+  height: 100vh;
+  background: var(--theme-background-color);
 }
 
 a {
