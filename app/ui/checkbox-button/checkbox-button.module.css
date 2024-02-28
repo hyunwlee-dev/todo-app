@@ -1,0 +1,26 @@
+.checkbox-label {
+  width: 1.333rem;
+  height: 1.333rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checked {
+  background: var(--theme-check-background);
+  position: relative;
+}
+
+.checked::before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  width: 1rem;
+  height: 1rem;
+  background: url("/images/icon-check.svg") no-repeat center / 60% 60%;
+}
