@@ -1,0 +1,11 @@
+.todo-list {
+  margin-top: 2rem;
+  overflow: hidden;
+  border-radius: 0.333rem;
+}
+
+.todo-item {
+  border-radius: 0;
+  border-bottom: 1px solid var(--theme-check-border);
+  cursor: pointer;
+}
