@@ -3,6 +3,7 @@ import { josefinSans } from "@/app/ui/font";
 import "normalize.css";
 import "./globals.css";
 import ThemeProvider from "./contexts/theme.context";
+import { TodosProvider } from "./contexts/todo.context";
 
 
 const title = process.env.NEXT_PUBLIC_TITLE;
@@ -47,7 +48,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className={josefinSans.className}>
         <ThemeProvider>
-          {children}
+          <TodosProvider>
+            {children}
+          </TodosProvider>
         </ThemeProvider>
       </body>
     </html>

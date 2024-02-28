@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, ReactNode, createContext, useContext, useEffect, useReducer } from "react";
+import React, { Dispatch, ReactNode, createContext, useContext, useReducer } from "react";
 import { Theme } from "@/app/definitions";
 
 const initialTheme = Theme.LIGHT;
@@ -30,7 +30,7 @@ export function useTheme() {
 
 export function useThemeDispatch() {
   const dispatch = useContext(ThemeDispatchContext);
-  if (!dispatch) throw Error('ThemeContext not found');
+  if (!dispatch) throw Error('ThemeDispatchContext not found');
   return dispatch;
 }
 
