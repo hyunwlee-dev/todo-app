@@ -2,6 +2,7 @@ import { useTodos, useTodosDispatch } from "@/app/contexts/todo.context";
 import { HTMLAttributes } from "react";
 import TodoItem from "@/app/ui/todo-item";
 import { Todo } from "@/app/definitions";
+import Image from "next/image";
 import styles from "./todo-list.module.css";
 
 interface IProps extends HTMLAttributes<HTMLUListElement> {
@@ -20,6 +21,12 @@ export default function TodoList({ ...props }: IProps) {
       }
     })
   }
+  const deleteTodo = (id: number) => {
+    dispatch({
+      type: 'deleted',
+      id: id,
+    })
+  }
   return (
     <ul
       className={styles['todo-list']}
@@ -34,7 +41,18 @@ export default function TodoList({ ...props }: IProps) {
               handleCheckboxChecked={() => toggleTodoDone({ id, text, done })}
               value={text}
               disabled
-            />
+            >
+              <button
+                className={styles['delete-button']}
+                onClick={() => deleteTodo(id)}
+              >
+                <Image src='/images/icon-cross.svg'
+                  width={18}
+                  height={18}
+                  alt='delete button'
+                />
+              </button>
+            </TodoItem>
           </li>
         ))
       }

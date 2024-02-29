@@ -8,4 +8,16 @@
   border-radius: 0;
   border-bottom: 1px solid var(--theme-check-border);
   cursor: pointer;
+  position: relative;
+}
+
+.delete-button {
+  display: none;
+  position: absolute;
+  right: 1.333rem;
+  width: 1.5rem;
+}
+
+.todo-item:hover .delete-button {
+  display: block;
 }

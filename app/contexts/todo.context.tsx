@@ -10,7 +10,8 @@ const initialTodos: Todo[] = [
 
 type TodosAction =
   | { type: 'added', text: string, done: boolean }
-  | { type: 'updated', todo: Todo };
+  | { type: 'updated', todo: Todo }
+  | { type: 'deleted', id: number }
 
 const TodosContext = createContext<Todo[]>(initialTodos);
 const TodosDispatchContext = createContext<Dispatch<TodosAction> | null>(null);
@@ -57,6 +58,9 @@ function todosReducer(todos: Todo[], action: TodosAction): Todo[] {
           return t;
         }
       });
+    }
+    case 'deleted': {
+      return todos.filter(t => t.id !== action.id);
     }
     default: {
       throw new Error('Unknown action');
