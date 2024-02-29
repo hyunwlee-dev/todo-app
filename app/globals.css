@@ -13,6 +13,7 @@
 
 .light {
   --theme-input-text-color: var(--theme-dark-grayish-blue);
+  --theme-line-through-color: hsl(236, 9%, 61%);
   --theme-todo-item-background-color: var(--theme-white-color);
   --theme-background-color: hsl(0, 0%, 98%);
   --theme-background-image: url('/images/bg-desktop-light.jpg');
@@ -24,6 +25,7 @@
 
 .dark {
   --theme-input-text-color: var(--theme-very-light-grayish-blue);
+  --theme-line-through-color: hsl(233, 14%, 35%);
   --theme-todo-item-background-color: var(--theme-dark-grayish-blue);
   --theme-background-color: hsla(235, 21%, 11%, 1);
   --theme-background-image: url('/images/bg-desktop-dark.jpg');

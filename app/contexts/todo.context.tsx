@@ -9,7 +9,8 @@ const initialTodos: Todo[] = [
 ];
 
 type TodosAction =
-  | { type: 'added', text: string, done: boolean };
+  | { type: 'added', text: string, done: boolean }
+  | { type: 'updated', todo: Todo };
 
 const TodosContext = createContext<Todo[]>(initialTodos);
 const TodosDispatchContext = createContext<Dispatch<TodosAction> | null>(null);
@@ -48,8 +49,17 @@ function todosReducer(todos: Todo[], action: TodosAction): Todo[] {
         done: action.done,
       }];
     }
+    case 'updated': {
+      return todos.map(t => {
+        if (t.id === action.todo.id) {
+          return action.todo;
+        } else {
+          return t;
+        }
+      });
+    }
     default: {
-      throw new Error('Unknown action: ' + action.type);
+      throw new Error('Unknown action');
     }
   }
 }

@@ -25,7 +25,11 @@ export default function TodoItem({
         onChange={handleCheckboxChecked}
       />
       <input
-        className={styles.input}
+        className={clsx(
+          {
+            [styles.checked]: checked,
+            [styles.disabled]: props.disabled
+          }, styles.input)}
         {...props}
       />
       {children}

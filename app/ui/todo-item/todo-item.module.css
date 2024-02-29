@@ -15,5 +15,11 @@
   border: 1px solid var(--theme-check-border);
 }
 
-.input {
+.disabled {
+  cursor: pointer;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: var(--theme-line-through-color);
 }
