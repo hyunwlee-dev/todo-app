@@ -1,5 +1,5 @@
 import { useTodos, useTodosDispatch } from "@/app/contexts/todo.context";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useEffect } from "react";
 import TodoItem from "@/app/ui/todo-item";
 import { Todo } from "@/app/definitions";
 import Image from "next/image";
@@ -56,7 +56,7 @@ export default function TodoList({ ...props }: IProps) {
           {...props}
         >
           {
-            todos && todos.map(({ id, text, done }, index) => (
+            todos?.map(({ id, text, done }, index) => (
               <Draggable
                 key={`todo-${id}`}
                 draggableId={id}

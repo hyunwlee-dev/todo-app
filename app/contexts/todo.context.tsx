@@ -3,11 +3,7 @@ import { Dispatch, ReactNode, createContext, useContext, useEffect, useReducer }
 import { Todo } from '@/app/definitions';
 import LocalStorageImpl from '@/app/utils/LocalStorage';
 
-const initialTodos: Todo[] = [
-  { id: crypto.randomUUID(), text: 'Philosopher’s Path', done: true },
-  { id: crypto.randomUUID(), text: 'Visit the temple', done: false },
-  { id: crypto.randomUUID(), text: 'Drink matcha', done: false }
-];
+const initialTodos: Todo[] = [];
 
 type TodosAction =
   | { type: 'read' }
