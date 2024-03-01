@@ -1,5 +1,5 @@
 "use client";
-import React, { Dispatch, ReactNode, createContext, useContext, useReducer } from "react";
+import React, { Dispatch, ReactNode, createContext, useContext, useEffect, useReducer } from "react";
 import { Theme } from "@/app/definitions";
 
 const initialTheme = Theme.LIGHT;
@@ -14,6 +14,30 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
     themeReducer,
     initialTheme
   );
+
+  useEffect(() => {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const localTheme = window.localStorage.getItem('theme');
+    if (localTheme === 'dark') {
+      dispatch({ type: 'toggle' });
+    } else if (!localTheme && isDark) {
+      dispatch({ type: 'toggle' });
+    }
+  }, []);
+
+  useEffect(() => {
+    const htmlElement = window.document.documentElement;
+    if (htmlElement) {
+      if (theme === Theme.LIGHT) {
+        htmlElement.classList.remove('dark');
+        htmlElement.classList.add('light');
+      } else {
+        htmlElement.classList.remove('light');
+        htmlElement.classList.add('dark');
+      }
+    }
+    window.localStorage.setItem('theme', theme === Theme.LIGHT ? 'light' : 'dark');
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={theme}>
