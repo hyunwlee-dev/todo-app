@@ -56,7 +56,7 @@ export default function TodoList({ ...props }: IProps) {
           {...props}
         >
           {
-            todos.map(({ id, text, done }, index) => (
+            todos && todos.map(({ id, text, done }, index) => (
               <Draggable
                 key={`todo-${id}`}
                 draggableId={id}

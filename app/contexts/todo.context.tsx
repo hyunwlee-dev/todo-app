@@ -1,7 +1,7 @@
 "use client";
 import { Dispatch, ReactNode, createContext, useContext, useEffect, useReducer } from 'react';
 import { Todo } from '@/app/definitions';
-import LocalStorageImpl from '@/app/utils/LocalRepository';
+import LocalStorageImpl from '@/app/utils/LocalStorage';
 
 const initialTodos: Todo[] = [
   { id: crypto.randomUUID(), text: 'Philosopher’s Path', done: true },

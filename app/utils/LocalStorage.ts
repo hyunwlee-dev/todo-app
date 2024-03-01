@@ -8,7 +8,7 @@ export default class LocalStorageImpl implements LocalStorage {
   }
 
   get() {
-    return JSON.parse(localStorage.getItem(this.key) || '{}');
+    return JSON.parse(localStorage.getItem(this.key) || '[]');
   }
 
   remove() {
