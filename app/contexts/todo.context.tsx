@@ -14,6 +14,7 @@ type TodosAction =
   | { type: 'added', text: string, done: boolean }
   | { type: 'updated', todo: Todo }
   | { type: 'deleted', id: string }
+  | { type: 'reordered', todos: Todo[] }
 
 const TodosContext = createContext<Todo[]>(initialTodos);
 const TodosDispatchContext = createContext<Dispatch<TodosAction> | null>(null);
@@ -80,6 +81,11 @@ function todosReducer(todos: Todo[], action: TodosAction): Todo[] {
       const deletedTodos = todos.filter(t => t.id !== action.id);
       storage.save(deletedTodos);
       return deletedTodos;
+    }
+    case 'reordered': {
+      const reorderedTodos = action.todos;
+      storage.save(reorderedTodos);
+      return reorderedTodos;
     }
     default: {
       throw new Error('Unknown action');

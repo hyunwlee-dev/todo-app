@@ -17,7 +17,10 @@
 }
 
 .input {
-  word-break: break-word;
+  width: 100%;
+  color: var(--theme-input-text-color);
+  line-height: 1rem;
+  letter-spacing: -0.014rem;
 }
 
 .disabled {
