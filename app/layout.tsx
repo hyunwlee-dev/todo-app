@@ -5,7 +5,6 @@ import "./globals.css";
 import ThemeProvider from "./contexts/theme.context";
 import { TodosProvider } from "./contexts/todo.context";
 
-
 const title = process.env.NEXT_PUBLIC_TITLE;
 const description = process.env.NEXT_PUBLIC_DESCRIPTION;
 const url = process.env.NEXT_PUBLIC_URL;

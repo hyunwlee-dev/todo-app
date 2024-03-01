@@ -1,5 +1,5 @@
 import { useTodos, useTodosDispatch } from "@/app/contexts/todo.context";
-import { HTMLAttributes, useEffect } from "react";
+import { HTMLAttributes } from "react";
 import TodoItem from "@/app/ui/todo-item";
 import { Todo } from "@/app/definitions";
 import Image from "next/image";

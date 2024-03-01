@@ -1,11 +1,11 @@
 import Container from "@/app/ui/container";
-import { HTMLAttributes, useState } from "react";
-import TodoList from "@/app/ui/todo-list";
+import React, { HTMLAttributes, useState } from "react";
 import TodoItem from "@/app/ui/todo-item";
 import { useTodos, useTodosDispatch } from "@/app/contexts/todo.context";
 import { DropResult } from "@hello-pangea/dnd";
 import dynamic from "next/dynamic";
-import { Todo } from "../definitions";
+import { Todo } from "@/app/definitions";
+import TodoList from "@/app/ui/todo-list";
 
 const DragDropContext = dynamic(
   () =>
