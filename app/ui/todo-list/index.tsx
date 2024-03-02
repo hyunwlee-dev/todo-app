@@ -1,9 +1,10 @@
-import { useTodos, useTodosDispatch } from "@/app/contexts/todo.context";
+import { useTodosDispatch } from "@/app/contexts/todo.context";
 import { HTMLAttributes } from "react";
 import TodoItem from "@/app/ui/todo-item";
 import { Todo } from "@/app/definitions";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import clsx from "clsx";
 import styles from "./todo-list.module.css";
 
 const Droppable = dynamic(
@@ -23,11 +24,12 @@ const Draggable = dynamic(
 );
 
 interface IProps extends HTMLAttributes<HTMLUListElement> {
+  filteredTodos: Todo[];
 }
 
-export default function TodoList({ ...props }: IProps) {
-  const todos = useTodos();
+export default function TodoList({ filteredTodos, ...props }: IProps) {
   const dispatch = useTodosDispatch();
+
   const toggleTodoDone = ({ id, text, done }: Todo) => {
     dispatch({
       type: 'updated',
@@ -38,12 +40,15 @@ export default function TodoList({ ...props }: IProps) {
       }
     })
   }
+
   const deleteTodo = (id: string) => {
     dispatch({
       type: 'deleted',
       id: id,
     })
   }
+
+
   return (
     <Droppable
       droppableId="droppable"
@@ -56,7 +61,7 @@ export default function TodoList({ ...props }: IProps) {
           {...props}
         >
           {
-            todos?.map(({ id, text, done }, index) => (
+            filteredTodos?.map(({ id, text, done }, index) => (
               <Draggable
                 key={`todo-${id}`}
                 draggableId={id}
@@ -69,7 +74,7 @@ export default function TodoList({ ...props }: IProps) {
                     {...provided.dragHandleProps}
                   >
                     <TodoItem
-                      className={styles['todo-item']}
+                      className={clsx(styles['todo-item'], { [styles.first]: index === 0 })}
                       checked={done}
                       handleCheckboxChecked={() => toggleTodoDone({ id, text, done })}
                       value={text}

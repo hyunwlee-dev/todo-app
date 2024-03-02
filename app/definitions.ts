@@ -9,6 +9,12 @@ export type Todo = {
   done: boolean;
 };
 
+export enum Tab {
+  ALL,
+  ACTIVE,
+  COMPLETED
+}
+
 export interface LocalStorage {
   save: (todos: Todo[]) => void;
   get: () => Todo[];

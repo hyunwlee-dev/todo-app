@@ -1,0 +1,47 @@
+.todo-board {
+  box-shadow: 0px 35px 50px -15px hsla(0, 0%, 0%, 0.5);
+  border-radius: 0.333rem;
+}
+
+.todo-tab {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 3.556rem;
+  background: var(--theme-todo-item-background-color);
+  border-radius: 0 0 0.333rem 0.333rem;
+}
+
+.todo-tab > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+.count,
+.tab-button,
+.button-clear-completed {
+  color: var(--theme-line-through-color);
+}
+
+.count {
+  flex: 2 0 0;
+}
+
+.tabs {
+  flex: 3 0 0;
+  font-weight: var(--font-weight-bold);
+}
+
+.buttons {
+  flex: 2 0 0;
+}
+
+.tab-button {
+  font-weight: var(--font-weight-bold);
+}
+
+.focus {
+  color: hsla(220, 98%, 61%, 1);
+}

@@ -4,8 +4,10 @@ import TodoItem from "@/app/ui/todo-item";
 import { useTodos, useTodosDispatch } from "@/app/contexts/todo.context";
 import { DropResult } from "@hello-pangea/dnd";
 import dynamic from "next/dynamic";
-import { Todo } from "@/app/definitions";
+import { Tab, Todo } from "@/app/definitions";
 import TodoList from "@/app/ui/todo-list";
+import TodoTab from "@/app/ui/todo-tab";
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const DragDropContext = dynamic(
   () =>
@@ -23,6 +25,8 @@ export default function TodoContainer({ className, ...props }: IProps) {
   const [checked, setChecked] = useState(false);
   const todos = useTodos();
   const dispatch = useTodosDispatch();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
 
   const initAddTodoStates = () => {
     setText('');
@@ -69,6 +73,36 @@ export default function TodoContainer({ className, ...props }: IProps) {
     })
   }
 
+  const changeTab = (tabIdx: number) => {
+    const params = new URLSearchParams('?');
+    if (tabIdx !== Tab.ALL)
+      params.set('tab', Tab[tabIdx].toLowerCase());
+    else
+      params.delete('tab');
+    replace(`?${params.toString()}`);
+  }
+
+  const getParam = () => new URLSearchParams(searchParams).get('tab') || 'all';
+
+  const filteredTodos = () => {
+    const param = getParam();
+    switch (param) {
+      case Tab[Tab.ALL].toLowerCase(): {
+        return todos;
+      }
+      case Tab[Tab.ACTIVE].toLowerCase(): {
+        return todos.filter(({ done }) => !done);
+      }
+      case Tab[Tab.COMPLETED].toLowerCase(): {
+        return todos.filter(({ done }) => done);
+      }
+      default: {
+        throw new Error('Unknown tab');
+      }
+    }
+  }
+
+
   return (
     <Container
       className={className}
@@ -83,11 +117,18 @@ export default function TodoContainer({ className, ...props }: IProps) {
         onChange={(e) => handleInputChange(e)}
         onKeyDown={(e) => handleOnKeyDown(e)}
       />
-      <DragDropContext
-        onDragEnd={onDragEnd}
+      <TodoTab
+        tabs={['All', 'Active', 'Completed']}
+        pickedTab={getParam().toUpperCase()}
+        onChangeTab={changeTab}
+        filteredCnt={filteredTodos().length}
       >
-        <TodoList />
-      </DragDropContext>
-    </Container>
+        <DragDropContext
+          onDragEnd={onDragEnd}
+        >
+          <TodoList filteredTodos={filteredTodos()} />
+        </DragDropContext>
+      </TodoTab>
+    </Container >
   );
 }

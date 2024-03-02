@@ -17,7 +17,7 @@ export default function TodoItem({
 }: IProps) {
   return (
     <div
-      className={clsx(styles.item, className)}
+      className={clsx(styles.item, { [styles.shadow]: !props.disabled }, className)}
     >
       <CheckboxButton
         className={styles['checkbox-button']}

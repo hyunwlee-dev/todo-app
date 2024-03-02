@@ -1,6 +1,5 @@
 .todo-list {
   margin-top: 2rem;
-  border-radius: 0.333rem;
 }
 
 .todo-item {
@@ -19,4 +18,8 @@
 
 .todo-item:hover .delete-button {
   display: block;
+}
+
+.first {
+  border-radius: 0.333rem ;
 }
