@@ -42,6 +42,8 @@ export default function TodoContainer({ className, ...props }: IProps) {
   };
 
   const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (text === '')
+      return;
     if (e.key === 'Enter') {
       initAddTodoStates();
       dispatch({
