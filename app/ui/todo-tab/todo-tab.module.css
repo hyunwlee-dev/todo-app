@@ -45,3 +45,9 @@
 .focus {
   color: hsla(220, 98%, 61%, 1);
 }
+
+.caption {
+  color: var(--theme-line-through-color);
+  text-align: center;
+  margin-top: 2.778rem;
+}

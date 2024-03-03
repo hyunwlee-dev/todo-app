@@ -16,7 +16,6 @@
 .checkbox-button {
   margin-left: 1.333rem;
   flex: 1 0 auto;
-  border: 1px solid var(--theme-check-border);
 }
 
 .input {
