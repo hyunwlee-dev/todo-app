@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/app/ui/container";
 import React, { HTMLAttributes, useState } from "react";
 import TodoItem from "@/app/ui/todo-item";
@@ -8,7 +9,9 @@ import { Tab, Todo } from "@/app/definitions";
 import TodoList from "@/app/ui/todo-list";
 import TodoTab from "@/app/ui/todo-tab";
 import { useRouter, useSearchParams } from 'next/navigation'
+import { DragDropContext } from "@hello-pangea/dnd";
 
+/*
 const DragDropContext = dynamic(
   () =>
     import('@hello-pangea/dnd').then(mod => {
@@ -16,6 +19,7 @@ const DragDropContext = dynamic(
     }),
   { ssr: false },
 );
+*/
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
 }

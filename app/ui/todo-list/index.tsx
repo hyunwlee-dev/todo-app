@@ -1,3 +1,5 @@
+"use client";
+
 import { useTodosDispatch } from "@/app/contexts/todo.context";
 import { HTMLAttributes } from "react";
 import TodoItem from "@/app/ui/todo-item";
@@ -6,7 +8,9 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import clsx from "clsx";
 import styles from "./todo-list.module.css";
+import { Droppable, Draggable } from "@hello-pangea/dnd";
 
+/*
 const Droppable = dynamic(
   () =>
     import('@hello-pangea/dnd').then(mod => {
@@ -22,6 +26,7 @@ const Draggable = dynamic(
     }),
   { ssr: false },
 );
+*/
 
 interface IProps extends HTMLAttributes<HTMLUListElement> {
   filteredTodos: Todo[];
